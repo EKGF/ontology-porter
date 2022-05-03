@@ -1,0 +1,203 @@
+@prefix : <https://ekgf.org/ontology/porter#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ekgf-porter: <https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#> .
+@base <https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#> .
+
+<https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#> rdf:type owl:Ontology ;
+                                                                           rdfs:isDefinedBy <https://github.com/EKGF/ontology-porter> ;
+                                                                           rdfs:label "The Porter Ontology"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#hasActivity
+ekgf-porter:hasActivity rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty ;
+                        rdfs:domain ekgf-porter:ActivityCollection ;
+                        rdfs:range ekgf-porter:Activity .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#hasValueChain
+ekgf-porter:hasValueChain rdf:type owl:ObjectProperty ;
+                          owl:inverseOf ekgf-porter:isPartOfValueSystem ;
+                          rdf:type owl:FunctionalProperty ;
+                          rdfs:domain ekgf-porter:ValueSystem ;
+                          rdfs:range ekgf-porter:ValueChain .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#isPartOfValueSystem
+ekgf-porter:isPartOfValueSystem rdf:type owl:ObjectProperty ;
+                                rdfs:domain ekgf-porter:ValueChain ;
+                                rdfs:range ekgf-porter:ValueSystem .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#Activity
+ekgf-porter:Activity rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#ActivityCollection
+ekgf-porter:ActivityCollection rdf:type owl:Class ;
+                               rdfs:comment "(abstract) a collection of activities, in a particular sequence, nothing more nothing less"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#BusinessUnit
+ekgf-porter:BusinessUnit rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#BusinessUnitPlan
+ekgf-porter:BusinessUnitPlan rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#BusinessUnitValueChain
+ekgf-porter:BusinessUnitValueChain rdf:type owl:Class ;
+                                   rdfs:subClassOf ekgf-porter:ValueChain ;
+                                   rdfs:comment "Focus on specific business units rather than the entire organization, and may integrate with other internal value chains."@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#CustomerService
+ekgf-porter:CustomerService rdf:type owl:Class ;
+                            rdfs:subClassOf ekgf-porter:PrimaryActivity ;
+                            rdfs:label "Customer Service"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#FirmInfrastructure
+ekgf-porter:FirmInfrastructure rdf:type owl:Class ;
+                               rdfs:subClassOf ekgf-porter:SupportActivity ;
+                               rdfs:comment "Executives, management team, legal team, accounting etc" ;
+                               rdfs:label "Firm Infrastructure"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#GlobalValueChain
+ekgf-porter:GlobalValueChain rdf:type owl:Class ;
+                             rdfs:subClassOf ekgf-porter:ValueChain ;
+                             rdfs:comment "Cross borders or regions and may include multinational partnerships and trade agreements."@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#HumanResourceManagement
+ekgf-porter:HumanResourceManagement rdf:type owl:Class ;
+                                    rdfs:subClassOf ekgf-porter:SupportActivity ;
+                                    rdfs:label "Human Resource Management"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#InboundLogistics
+ekgf-porter:InboundLogistics rdf:type owl:Class ;
+                             rdfs:subClassOf ekgf-porter:PrimaryActivity ;
+                             rdfs:label "Inbound Logistics"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#MarketingAndSales
+ekgf-porter:MarketingAndSales rdf:type owl:Class ;
+                              rdfs:subClassOf ekgf-porter:PrimaryActivity ;
+                              rdfs:label "Marketing and Sales"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#Operations
+ekgf-porter:Operations rdf:type owl:Class ;
+                       rdfs:subClassOf ekgf-porter:PrimaryActivity ;
+                       rdfs:label "Operations"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#OutboundLogistics
+ekgf-porter:OutboundLogistics rdf:type owl:Class ;
+                              rdfs:subClassOf ekgf-porter:PrimaryActivity ;
+                              rdfs:label "Outbound Logistics"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#PhysicalValueChain
+ekgf-porter:PhysicalValueChain rdf:type owl:Class ;
+                               rdfs:subClassOf ekgf-porter:ValueChain ;
+                               rdfs:comment "Involve physical, tangible resources."@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#PrimaryActivity
+ekgf-porter:PrimaryActivity rdf:type owl:Class ;
+                            rdfs:subClassOf ekgf-porter:Activity ;
+                            rdfs:label "Primary Activity"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#Procurement
+ekgf-porter:Procurement rdf:type owl:Class ;
+                        rdfs:subClassOf ekgf-porter:SupportActivity ;
+                        rdfs:label "Procurement"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#SupplyChain
+ekgf-porter:SupplyChain rdf:type owl:Class ;
+                        rdfs:subClassOf ekgf-porter:ValueSystem .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#SupportActivity
+ekgf-porter:SupportActivity rdf:type owl:Class ;
+                            rdfs:subClassOf ekgf-porter:Activity ;
+                            rdfs:label "Support Activity"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#TechnologyDevelopment
+ekgf-porter:TechnologyDevelopment rdf:type owl:Class ;
+                                  rdfs:subClassOf ekgf-porter:SupportActivity ;
+                                  rdfs:comment """(R&D)
+
+This gets into the \"how to\" stuff""" .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#ValueChain
+ekgf-porter:ValueChain rdf:type owl:Class ;
+                       rdfs:subClassOf ekgf-porter:ActivityCollection ;
+                       rdfs:comment """represents the activities of one line of business.
+
+Models and illustrates the linkages needed to perform the discrete functions that keep customers buying products or services.
+
+The mechanism to execute the processes"""@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#ValueStream
+ekgf-porter:ValueStream rdf:type owl:Class ;
+                        rdfs:subClassOf ekgf-porter:ActivityCollection ;
+                        rdfs:comment """The Value Stream is the connection between the activities.
+
+The Value Stream groups the Activities together."""@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#ValueSystem
+ekgf-porter:ValueSystem rdf:type owl:Class ;
+                        rdfs:comment "Linking value chains" ,
+                                     "eco-systems are enormous value systems" .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#VirtualValueChain
+ekgf-porter:VirtualValueChain rdf:type owl:Class ;
+                              rdfs:subClassOf ekgf-porter:ValueChain ;
+                              rdfs:comment "Involve virtual, electronic information/"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#ChipPotatos
+ekgf-porter:ChipPotatos rdf:type owl:NamedIndividual ,
+                                 ekgf-porter:Operations .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#PepsiPotatoChipValueChain
+ekgf-porter:PepsiPotatoChipValueChain rdf:type owl:NamedIndividual ,
+                                               ekgf-porter:ValueChain ;
+                                      ekgf-porter:hasActivity ekgf-porter:ChipPotatos ;
+                                      ekgf-porter:isPartOfValueSystem ekgf-porter:PepsiValueSystem ;
+                                      rdfs:label "Pepsico Potato Chip Value Chain"@en .
+
+
+###  https://raw.githubusercontent.com/EKGF/ontology-porter/main/porter.ttl#PepsiValueSystem
+ekgf-porter:PepsiValueSystem rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
